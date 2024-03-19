@@ -1,0 +1,21 @@
+name: Checkmarx One Scan
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  push:
+    branches:
+      - master
+      - develop  
+jobs:
+  cxonescans:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:          
+          cx_tenant: ${{ secrets.CX_TENANT }}
+          base_uri: https://ast.checkmarx.net
+          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
