@@ -5,9 +5,7 @@ on:
   push:
     branches:
       - master
-      - develop
-      - release
-      
+      - develop  
 jobs:
   cxonescans:
     runs-on: ubuntu-latest
